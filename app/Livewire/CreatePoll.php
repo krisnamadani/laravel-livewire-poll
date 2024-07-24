@@ -44,7 +44,7 @@ class CreatePoll extends Component
     public function createPoll()
     {
         $this->validate();
-        
+
         $poll = Poll::create([
             'title' => $this->title
         ])->options()->createMany(
@@ -54,5 +54,6 @@ class CreatePoll extends Component
             );
 
         $this->reset(['title', 'options']);
+        $this->dispatch('pollCreated');
     }
 }
